@@ -7,7 +7,7 @@ import java.io.Serializable;
 public @Data
 class Dish implements Serializable {
     private String dishName;
-    private int dishNumber; // includes drinks //system from which i took inspiration didn't have this and it was annoying
+    private int dishNumber; // includes drinks
     private float price; //can be zero if its part of All You Can Eat
     private String category;//maybe i can add a 'new category' function
 
@@ -18,5 +18,13 @@ class Dish implements Serializable {
         this.category = category;
     }
 
+    public Dish updateDish(Dish replacementDish){
+        this.setDishName(replacementDish.getDishName());
+        this.setDishNumber(replacementDish.getDishNumber());
+        this.setPrice(replacementDish.getPrice());
+        this.setCategory(replacementDish.getCategory());
+        return this;
+
+    }
 
 }

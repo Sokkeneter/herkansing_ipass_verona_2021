@@ -52,7 +52,7 @@ public class PersistenceManager implements Serializable {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);
         oos.writeObject(Restaurant.getCurrentRestaurant());
-            System.out.println("restaurant being saved: "+Restaurant.getCurrentRestaurant().getTables());
+            System.out.println("restaurant being saved: "+Restaurant.getCurrentRestaurant());
 
         byte[] bytez = baos.toByteArray();
 

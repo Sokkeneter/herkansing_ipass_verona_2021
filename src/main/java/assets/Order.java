@@ -9,7 +9,7 @@ public @Data
 class Order implements Serializable {
     private int orderNumber;
     private int tablenr;
-    private ArrayList<OrderItem> items = new ArrayList<>();
+    private ArrayList<OrderItem> items = new ArrayList<OrderItem>();
     private String status = "not send";
 
     public Order(int tablenr) {

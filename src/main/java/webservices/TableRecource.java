@@ -94,9 +94,11 @@ public class TableRecource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{table}/orderitems")
     public Response addDishToOrder(@PathParam("table") String tablenNr, @FormParam("dishNr") String dishNr) {
-        try{
+//        try{
         Restaurant restaurant = Restaurant.getCurrentRestaurant(); //get current restaurant
         //turn parameters into usable values
+//        System.out.println("tablenr= "+ tablenNr);
+//        System.out.println("dishnr= " + dishNr);
         int tablenr = Integer.parseInt(tablenNr);
         int dishnr = Integer.parseInt(dishNr);
         Table table = restaurant.getTableFromNumber(tablenr); //get table
@@ -108,9 +110,10 @@ public class TableRecource {
                 return Response.status(404).entity("table or dish not found").build();
             }
 
-        }catch(Exception e){
-            return Response.noContent().entity("something went wrong:" + Arrays.toString(e.getStackTrace())).build();
-        }
+//        }catch(Exception e){
+//            System.out.println(e.getStackTrace());
+//            return Response.noContent().entity("something went wrong:" + Arrays.toString(e.getStackTrace())).build();
+//        }
     }
 
     @POST

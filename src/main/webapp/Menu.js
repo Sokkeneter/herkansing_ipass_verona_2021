@@ -30,13 +30,10 @@ function addListItem(key, dish){
     DishesTemplateClone.querySelector('.price').textContent = dish.price;
     DishesTemplateClone.querySelector('.category').textContent = dish.category;
 
-    const editButton = document.createElement('button');
-    // .textContent = 'edit';
-    editButton.textContent = 'edit';
-    editButton.addEventListener('click', (_event) => window.location.assign(`/dishForm.html?key=${dish.dishNumber}`));
-    // editButton.addEventListener('click', event => editSubject(event, key));
-    DishesTemplateClone.querySelector('.editButton').append(editButton);
+    const addOrderButton = document.querySelector('#addToOrderButton');
+    // addOrderButton.addEventListener('click', (_event) => window.location.assign(`/dishForm.html?key=${dish.dishNumber}`));
 
+    document.querySelector('#viewOrdersButton').addEventListener('click', ()=> window.location.assign('/orders.html'));
     const liElement = DishesTemplateClone.querySelector('li');
     liElement.setAttribute('id', key);
 

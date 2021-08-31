@@ -1,8 +1,8 @@
 package webservices;
 
-import assets.OrderItem;
 import assets.Restaurant;
 import assets.Dish;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,7 +20,7 @@ public class DishRecource {
     public Response getDishes() {
 
         Restaurant restaurant = Restaurant.getCurrentRestaurant();
-        System.out.println(restaurant.getDishes());
+//        System.out.println(restaurant.getDishes());
 
         if(restaurant.getDishes() != null){
             ArrayList<Dish> dishes = restaurant.getDishes();
@@ -32,8 +32,8 @@ public class DishRecource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{dish}")
-    public Response getDishFromNumber(@PathParam("dish") String dishnNr) {
+    @Path("{dishNr}")
+    public Response getDishFromNumber(@PathParam("dishNr") String dishnNr) {
         Restaurant restaurant = Restaurant.getCurrentRestaurant();
         int dishnr = Integer.parseInt(dishnNr);
         Dish dish = restaurant.getDishFromNumber(dishnr);
@@ -57,20 +57,43 @@ public class DishRecource {
     }
 
     @POST
+//    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createDish(@FormParam("name") String name,
-                               @FormParam("number") String number,
+    public Response createDish(@FormParam("dishname") String name,
+                               @FormParam("dishnumber") String number,
                                @FormParam("price") String price,
                                @FormParam("category") String category){
         try{
             Dish dish = new Dish(name,Integer.parseInt(number), Float.parseFloat(price), category);
             Restaurant.getCurrentRestaurant().addDishToRestaurant(dish);
             return Response.ok().entity(dish).build();
-        }catch (Exception e){
-            Map<String, String> messages = new HashMap<>();
-            messages.put("error", e.getMessage());
-
-            return Response.noContent().entity(messages).build();
+        }catch (IllegalArgumentException iae){
+            return Response.status(409).entity("dish with this number already exists").build();
+        }
+    }
+    @PUT
+    @Path("{dishNr}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateDish(@PathParam("dishNr") String number,
+                               @FormParam("dishname") String dishName,
+                               @FormParam("dishnumber") String dishNumber,
+                               @FormParam("price") String price,
+                               @FormParam("category") String category){
+        try{
+//            System.out.println(number + dishName + dishNumber + price + category);
+            int oldnumber = Integer.parseInt(number);
+            Dish oldDish = Restaurant.getCurrentRestaurant().getDishFromNumber(oldnumber);
+            if(oldDish == null){
+                return Response.status(404).build();
+            }
+            int newNumber = Integer.parseInt(dishNumber);
+            float newPrice = Float.parseFloat(price);
+            Dish newDish = new Dish(dishName, newNumber, newPrice, category);
+            oldDish.updateDish(newDish);
+            return Response.ok(newDish).build();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return Response.noContent().entity("something went wrong").build();
         }
     }
     

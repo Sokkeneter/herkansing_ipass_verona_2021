@@ -1,0 +1,12 @@
+body{
+    background: #303030;
+
+}
+li{
+    background: #606060;
+    padding: 1rem;
+    margin: 1rem;
+}
+div{
+    background: #eaeaea;
+}

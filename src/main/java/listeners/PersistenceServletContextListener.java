@@ -20,7 +20,6 @@ import java.util.Arrays;
 public class PersistenceServletContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-
         System.out.println("contextListener - initialized");
         try {
             PersistenceManager.LoadRestaurantFromAzure();

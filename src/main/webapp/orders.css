@@ -1,0 +1,10 @@
+body{
+    background: #303030;
+    color: #eaeaea;
+}
+.order{
+    display: block;
+    border-radius: 0.5rem;
+    background: #eaeaea;
+    padding: 1rem;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>orders</title>
+    <link rel="stylesheet", href="orders.css">
+
+</head>
+<body>
+    <h2 id="tableNumber"></h2>
+    <ul id="orderList">
+    </ul>
+<template id="orderTemplate">
+    <div class="order">
+        <h3 id="ordernumber"></h3>
+
+
+        <span id="items">
+            <ul id="itemsList"></ul>
+        </span>
+        <span id="status"></span>
+        <button>send</button>
+    </div>
+</template>
+
+<template id="itemTemplate">
+    <p id="dishname"></p>
+    <p id="portions">
+        portions:
+        <input id="portionsNumberInput" type="number" hidden>
+    </p>
+    <p id="commentary">
+        commentary:
+        <textarea id="commentaryTextarea" hidden></textarea>
+    </p>
+</template>
+<a href="Menu.html">back</a>
+
+</body>
+<script type="module" src="orders.js" ></script>
+</html>

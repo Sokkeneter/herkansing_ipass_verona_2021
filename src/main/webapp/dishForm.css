@@ -1,0 +1,35 @@
+body{
+    background: #2c2c2c url("https://png.pngtree.com/thumb_back/fh260/20170803/pngtree-Food-Menu-Fare-Meal-background-photo-869492.jpg");
+    background-size: cover;
+    color: aliceblue;
+}
+main{
+    background: rgba(0, 0, 0, 0.5);
+    width: 90vw;
+    border-radius: 10px;
+
+    content: "";
+    clear: both;
+    display: table;
+
+    padding: 1rem;
+
+}
+div{
+    padding: 10px;
+}
+
+input, select{
+    display: block;
+    max-width: 400px;
+    margin-bottom: 2rem;
+
+}
+#dishFormDiv, #addCategoryDiv{
+    float: left;
+}
+#backbutton{
+    position: center;
+    bottom: 1rem;
+    right: 1rem;
+}

@@ -6,7 +6,15 @@ body{
 ul{
     list-style-type: none;
 }
+li{
+    padding: 15px;
+}
 .main{
     background: #303030;
+    padding: 1rem;
+    margin: 1rem;
 
+}
+a{
+    color: aliceblue;
 }

@@ -20,8 +20,11 @@ class Restaurant implements Serializable{
 
     private ArrayList<Table> tables = new ArrayList<>();
     private ArrayList<Dish> dishes = new ArrayList<>();
+    private ArrayList<String> categories = new ArrayList<>();
     static private Comparator<Dish> ascTitle;
     private static Restaurant currentRestaurant = new Restaurant();
+
+
     public static Restaurant getCurrentRestaurant() {return currentRestaurant;}
     public static void setCurrentRestaurant(Restaurant restaurant){currentRestaurant = restaurant;}
 
@@ -47,6 +50,14 @@ class Restaurant implements Serializable{
         isAdmin = false;
     }
 
+    public void addCategory(String category){
+        if(!categories.contains(category)){
+            categories.add(category);
+        }else{
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void addTableToRestaurant(Table table){
         if(!tables.contains(table)){
          this.tables.add(table);
@@ -56,6 +67,8 @@ class Restaurant implements Serializable{
     public void addDishToRestaurant(Dish dish){
         if(!dishes.contains(dish)){
             this.dishes.add(dish);
+        }else{
+            throw new IllegalArgumentException();
         }
     }
 
